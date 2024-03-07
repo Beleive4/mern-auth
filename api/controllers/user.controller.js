@@ -1,5 +1,5 @@
-export const test = (req,res)=>{
+export const test = (req, res) => {
     res.json({
-        message:"API IS WORKING."
+        message: "API IS WORKING."
     })
 }
