@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import router from './routes/user.route.js';
 
 
 dotenv.config();
@@ -15,9 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 const app = express();
 
-app.get("/", (req, res) => {
-    res.send("Hello Kiran.")
-})
+app.use("/api", router)
 
 
 app.listen(process.env.PORT, () => {
