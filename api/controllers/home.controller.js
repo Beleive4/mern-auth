@@ -9,15 +9,12 @@ const getDashboard = async (req, res) => {
 
 const updateDashboardData = async (req, res) => {
     const { id } = req.params;
-
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: "No Such Data" })
     }
-
     const updatedDashboard = await Home.findOneAndUpdate({ _id: id }, {
         ...req.body,
     })
-
     if (!updatedDashboard) {
         return res.status(404).json({ error: "No Such Data." })
     }

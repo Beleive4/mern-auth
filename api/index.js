@@ -24,9 +24,13 @@ app.listen(process.env.PORT, () => {
     console.log(`Application is running on port ${process.env.PORT}`);
 })
 
+app.use((req, res, next) => {
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    next();
+  });
 
 app.use("/api/user", router)
-app.use("/api/auth", authRouter)
+app.use("/api/user", authRouter)
 
 
 //error handling throught the application

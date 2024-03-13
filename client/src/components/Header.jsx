@@ -15,9 +15,15 @@ export default function Header() {
                     <Link to="/About">
                         <li>About</li>
                     </Link>
-                    <Link to="/Sign-in">
-                        <li>Sign In</li>
-                    </Link>
+
+                    <li
+                        onClick={() => {
+                            console.log("Hello");
+                            localStorage.clear();
+                            window.location.reload();
+                        }}
+                    >Log out</li>
+
 
                 </ul>
             </div>

@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import { loginAction } from '../Reusable/Action/AuthenticationAction';
 
 
-export default function Signin() {
+function Signin(props) {
+
+  const { loginAction } = props;
 
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
@@ -23,13 +27,8 @@ export default function Signin() {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+      loginAction(formData);
+
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {
@@ -84,9 +83,24 @@ export default function Signin() {
       <div className='mt-4 ml-1'>
         <p>Dont Have an account ? <Link to="/Sign-up"><span className='text-blue-500'>Sign up</span></Link></p>
       </div>
-      <p className="text-red-400 mt-4 ">
-        {error && 'Something Went Wrong!'}
-      </p>
+
     </div>
   )
 }
+
+
+const mapStateToProps = (state) => {
+  return {
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginAction: (val) => {
+      dispatch(loginAction(val));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
