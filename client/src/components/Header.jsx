@@ -17,6 +17,7 @@ export default function Header() {
                     </Link>
 
                     <li
+                        style={{ cursor: 'pointer' }}
                         onClick={() => {
                             console.log("Hello");
                             localStorage.clear();
