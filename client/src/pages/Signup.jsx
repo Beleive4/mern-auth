@@ -89,7 +89,7 @@ export default function Signup() {
 
 
       <div className='mt-4 ml-1'>
-        <p>Have an account ? <Link to="/Sign-in"><span className='text-blue-500'>Sign in</span></Link></p>
+        <p>Have an account ? <Link to="/"><span className='text-blue-500'>Sign in</span></Link></p>
       </div>
       <p className="text-red-400 mt-4 ">
         {error && 'Something Went Wrong!'}

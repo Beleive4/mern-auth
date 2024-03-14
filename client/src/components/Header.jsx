@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 export default function Header() {
+    const navigate = useNavigate();
+
     return (
         <div className='bg-slate-200'>
             <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
@@ -16,14 +18,16 @@ export default function Header() {
                         <li>About</li>
                     </Link>
 
+
                     <li
                         style={{ cursor: 'pointer' }}
                         onClick={() => {
-                            console.log("Hello");
                             localStorage.clear();
+                            navigate("/")
                             window.location.reload();
                         }}
                     >Log out</li>
+
 
 
                 </ul>

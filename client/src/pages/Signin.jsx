@@ -2,10 +2,15 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import OAuth from '../components/OAuth';
 import { loginAction } from '../Reusable/Action/AuthenticationAction';
 
 
 function Signin(props) {
+
+  const dd = import.meta.env.API_KEY;
+
+  console.log(dd,"dd4");
 
   const { loginAction } = props;
 
@@ -77,6 +82,7 @@ function Signin(props) {
         >
           {loading ? 'loading...' : ' Sign In'}
         </button>
+        <OAuth />
       </form>
 
 
